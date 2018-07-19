@@ -84,8 +84,8 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [link-packagist]: https://packagist.org/packages/randimg/faker-randimg-provider
 [link-travis]: https://travis-ci.org/randimg/faker-randimg-provider
-[link-scrutinizer]: https://scrutinizer-ci.com/g/randimg/faker-randimg-provider/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/randimg/faker-randimg-provider
-[link-downloads]: https://packagist.org/packages/randimg/faker-randimg-provider
+[link-scrutinizer]: https://scrutinizer-ci.com/g/SiroDiaz/RandImgProvider/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/SiroDiaz/RandImgProvider
+[link-downloads]: https://packagist.org/packages/SiroDiaz/RandImgProvider
 [link-author]: https://github.com/SiroDiaz
 [link-contributors]: ../../contributors

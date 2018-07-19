@@ -95,7 +95,7 @@ class RandImgProvider extends Base
      * a random number to avoid that multiple gifs loaded
      * in the page will be all the same gif.
      *
-     * @param bool $unique Defaults to false
+     * @param bool $rand Defaults to false
      */
     public function gifUrl($rand = false)
     {

@@ -77,13 +77,13 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/randimg/faker-randimg-provider.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/randimg/faker-randimg-provider/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/randimg/faker-randimg-provider.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/randimg/faker-randimg-provider.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/SiroDiaz/RandImgProvider/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/SiroDiaz/RandImgProvider.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/SiroDiaz/RandImgProvider.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/randimg/faker-randimg-provider.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/randimg/faker-randimg-provider
-[link-travis]: https://travis-ci.org/randimg/faker-randimg-provider
+[link-travis]: https://travis-ci.org/SiroDiaz/RandImgProvider
 [link-scrutinizer]: https://scrutinizer-ci.com/g/SiroDiaz/RandImgProvider/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/SiroDiaz/RandImgProvider
 [link-downloads]: https://packagist.org/packages/SiroDiaz/RandImgProvider

@@ -1,4 +1,4 @@
-# :package_name
+# RandImgProvider for Faker generator
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -7,7 +7,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-**Note:** Replace ```:author_name``` ```:author_username``` ```:author_website``` ```:author_email``` ```:vendor``` ```:package_name``` ```:package_description``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line. You can run `$ php prefill.php` in the command line to make all replacements at once. Delete the file prefill.php as well.
+**Note:** Replace ```:author_name``` ```SiroDiaz``` ```:author_website``` ```:author_email``` ```randimg``` ```faker-randimg-provider``` ```:package_description``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line. You can run `$ php prefill.php` in the command line to make all replacements at once. Delete the file prefill.php as well.
 
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
 PSRs you support to avoid any confusion with users and contributors.
@@ -30,14 +30,24 @@ vendor/
 Via Composer
 
 ``` bash
-$ composer require :vendor/:package_name
+$ composer require randimg/faker-randimg-provider
 ```
 
 ## Usage
 
 ``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+use Faker\Factory;
+use Faker\Generator;
+use Siro\RandImg\RandImgProvider;
+
+$faker = Factory::create();
+$faker->addProvider(new RandImgProvider($faker));
+
+$faker->imageUrl();	// http://www.rand-img.com/720/480
+$faker->imageUrl(300, 200);	// http://www.rand-img.com/300/200
+$faker->imageUrl(720, 480, 'sky');	// http://www.rand-img.com/720/480/sky
+$faker->imageUrl(720, 480, 'food', ['rand' => true]);	// http://www.rand-img.com/720/480/food?rand=4234532
+$faker->imageUrl(720, 480, 'food', ['rand' => true, 'blur' => 4, 'gray' => 1]); // http://www.rand-img.com/720/480/food?rand=4234532&blur=4&gray=1
 ```
 
 ## Change log
@@ -56,28 +66,28 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT
 
 ## Security
 
-If you discover any security related issues, please email :author_email instead of using the issue tracker.
+If you discover any security related issues, please email siro_diaz@yahoo.com instead of using the issue tracker.
 
 ## Credits
 
-- [:author_name][link-author]
+- [Siro Díaz Palazón][link-author]
 - [All Contributors][link-contributors]
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/:vendor/:package_name.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/randimg/faker-randimg-provider.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/:vendor/:package_name/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/:vendor/:package_name.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/:vendor/:package_name.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/:vendor/:package_name.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/randimg/faker-randimg-provider/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/randimg/faker-randimg-provider.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/randimg/faker-randimg-provider.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/randimg/faker-randimg-provider.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/:vendor/:package_name
-[link-travis]: https://travis-ci.org/:vendor/:package_name
-[link-scrutinizer]: https://scrutinizer-ci.com/g/:vendor/:package_name/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/:vendor/:package_name
-[link-downloads]: https://packagist.org/packages/:vendor/:package_name
-[link-author]: https://github.com/:author_username
+[link-packagist]: https://packagist.org/packages/randimg/faker-randimg-provider
+[link-travis]: https://travis-ci.org/randimg/faker-randimg-provider
+[link-scrutinizer]: https://scrutinizer-ci.com/g/randimg/faker-randimg-provider/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/randimg/faker-randimg-provider
+[link-downloads]: https://packagist.org/packages/randimg/faker-randimg-provider
+[link-author]: https://github.com/SiroDiaz
 [link-contributors]: ../../contributors

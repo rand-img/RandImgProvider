@@ -23,7 +23,7 @@ class RandImgProviderTest extends TestCase
      */
     public function testGenerateDefaultImageUrl()
     {
-        $this->assertRegExp('#(https?\:\/\/)?www\.rand\-img\.com\/(.+)#', $this->faker->imageUrl());
+        $this->assertRegExp('#https?\:\/\/?www\.rand\-img\.com\/720\/480#', $this->faker->imageUrl());
     }
 
     public function testGenerateImageUrlWithCustomWidth()

@@ -41,11 +41,15 @@ use Siro\RandImg\RandImgProvider;
 $faker = Factory::create();
 $faker->addProvider(new RandImgProvider($faker));
 
-$faker->imageUrl();	// http://www.rand-img.com/720/480
-$faker->imageUrl(300, 200);	// http://www.rand-img.com/300/200
-$faker->imageUrl(720, 480, 'sky');	// http://www.rand-img.com/720/480/sky
-$faker->imageUrl(720, 480, 'food', ['rand' => true]);	// http://www.rand-img.com/720/480/food?rand=4234532
+$faker->imageUrl(); // http://www.rand-img.com/720/480
+$faker->imageUrl(300, 200); // http://www.rand-img.com/300/200
+$faker->imageUrl(720, 480, 'sky');  // http://www.rand-img.com/720/480/sky
+$faker->imageUrl(720, 480, 'food', ['rand' => true]);   // http://www.rand-img.com/720/480/food?rand=4234532
 $faker->imageUrl(720, 480, 'food', ['rand' => true, 'blur' => 4, 'gray' => 1]); // http://www.rand-img.com/720/480/food?rand=4234532&blur=4&gray=1
+
+$faker->image(__DIR__, 200, 200);   // image path and filename joined
+$faker->image(__DIR__, 200, 200);   // image path and filename joined
+$faker->gif();  // gif path and filename
 ```
 
 ## Change log

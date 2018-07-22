@@ -29,6 +29,7 @@ class RandImgProviderTest extends TestCase
     public function testGenerateImageUrlWithCustomWidth()
     {
         $this->assertRegExp('#(https?\:\/\/)?www\.rand\-img\.com\/200\/480#', $this->faker->imageUrl(200));
+        $this->assertRegExp('#(https?\:\/\/)?www\.rand\-img\.com\/980\/480#', $this->faker->imageUrl(980));
     }
 
     public function testGenerateImageUrlWithCustomWidthAndHeight()
@@ -61,8 +62,8 @@ class RandImgProviderTest extends TestCase
     public function testGenerateDefaultSquaredImageUrl()
     {
         $this->assertRegExp(
-            '#(https?\:\/\/)?www\.rand\-img\.com\/200\/200\/food#',
-            $this->faker->squaredImageUrl(200, 'food')
+            '#(https?\:\/\/)?www\.rand\-img\.com\/200\/200#',
+            $this->faker->squaredImageUrl(200)
         );
     }
 
@@ -71,6 +72,18 @@ class RandImgProviderTest extends TestCase
         $this->assertRegExp(
             '#(https?\:\/\/)?www\.rand\-img\.com\/200\/200\/food#',
             $this->faker->squaredImageUrl(200, 'food')
+        );
+        $this->assertRegExp(
+            '#(https?\:\/\/)?www\.rand\-img\.com\/1024\/1024\/sky#',
+            $this->faker->squaredImageUrl(1024, 'sky')
+        );
+    }
+
+    public function testImageUrlWithParameters()
+    {
+        $this->assertRegExp(
+            '#http:\/\/www\.rand\-img\.com\/720\/480/food\?rand\=\d+&blur\=4&gray\=1#',
+            $this->faker->imageUrl(720, 480, 'food', ['rand' => true, 'blur' => 4, 'gray' => 1])
         );
     }
 

@@ -4,6 +4,7 @@ namespace Siro\RandImg;
 
 use Faker\Provider\Base;
 use InvalidArgumentException;
+use Exception;
 
 class RandImgProvider extends Base
 {
@@ -42,11 +43,29 @@ class RandImgProvider extends Base
 
         if (!$success) {
             unlink($filePath);
-
-            return false;
         }
 
-        return true;
+        return $success;
+    }
+
+    /**
+     * Obtain the full path for an image file.
+     *
+     * @param string  $dir      The directory where store the image to download
+     * @param string  $type     The image format
+     * @throws InvalidArgumentException if $dir is not a directory or is not writeable
+     *
+     * @return string full path.
+     */
+    private function getFullPath($dir = null, $type = 'jpg')
+    {
+        $dir = is_null($dir) ? sys_get_temp_dir() : $dir;
+        if (!is_dir($dir) || !is_writeable($dir)) {
+            throw new InvalidArgumentException(sprintf('Cannot write to directory "%s"', $dir));
+        }
+
+        $fileName = md5(uniqid(empty($_SERVER['SERVER_ADDR']) ? '' : $_SERVER['SERVER_ADDR'], true)) .'.jpg';
+        return $dir . DIRECTORY_SEPARATOR . $fileName;
     }
 
     /**
@@ -107,28 +126,24 @@ class RandImgProvider extends Base
     /**
      * Downloads an image to the specified directory.
      *
-     * @param string $dir
+     * @param mixed   $dir
      * @param integer $width
      * @param integer $height
-     * @param string $category
-     * @param array $params
+     * @param string  $category
+     * @param array   $params
      * @throws InvalidArgumentException If not a directory or writeable
      *
      * @return string Filename with the path
      */
     public function image($dir = null, $width = 720, $height = 480, $category = '', array $params = [])
     {
-        $dir = is_null($dir) ? sys_get_temp_dir() : $dir;
-        if (!is_dir(filename) || !is_writeable($dir)) {
-            throw new InvalidArgumentException(sprintf('Cannot write to directory "%s"', $dir));
+        $fullPath = $this->getFullPath($dir);
+        $url = $this->imageUrl($width, $height, $category, $params);
+        if (!$this->getRemoteImage($url, $fullPath)) {
+            throw new Exception('error downloading the image');
         }
 
-        $fileName = md5(uniqid(empty($_SERVER['SERVER_ADDR']) ? '' : $_SERVER['SERVER_ADDR'], true)) .'.jpg';
-        $filePath = $dir . DIRECTORY_SEPARATOR . $fileName;
-        $url = $this->imageUrl($width, $height, $category, $params);
-        $this->getRemoteImage($url, $filePath);
-        
-        return $filePath;
+        return $fullPath;
     }
 
     /**
@@ -141,16 +156,12 @@ class RandImgProvider extends Base
      */
     public function gif($dir = null)
     {
-        $dir = is_null($dir) ? sys_get_temp_dir() : $dir;
-        if (!is_dir(filename) || !is_writeable($dir)) {
-            throw new InvalidArgumentException(sprintf('Cannot write to directory "%s"', $dir));
+        $fullPath = $this->getFullPath($dir, 'gif');
+        $url = $this->gifUrl();
+        if (!$this->getRemoteImage($url, $fullPath)) {
+            throw new Exception('error downloading the image');
         }
-
-        $fileName = md5(uniqid(empty($_SERVER['SERVER_ADDR']) ? '' : $_SERVER['SERVER_ADDR'], true)) .'.gif';
-        $filePath = $dir . DIRECTORY_SEPARATOR . $fileName;
-        $url = $this->imageUrl($width, $height, $category, $params);
-        $this->getRemoteImage($url, $filePath);
         
-        return $filePath;
+        return $fullPath;
     }
 }

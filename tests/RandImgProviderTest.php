@@ -5,6 +5,8 @@ namespace Siro\Tests;
 use Faker\Factory;
 use Faker\Generator;
 use Siro\RandImg\RandImgProvider;
+use InvalidArgumentException;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 class RandImgProviderTest extends TestCase
@@ -101,5 +103,35 @@ class RandImgProviderTest extends TestCase
             '#https?\:\/\/www\.rand\-img\.com\/gif\?rand=\d+#',
             $this->faker->gifUrl(true)
         );
+    }
+
+    public function testDownloadGif()
+    {
+        $fullPath = $this->faker->gif();
+        $this->assertTrue(file_exists($fullPath));
+    }
+
+    public function testDownloadGifWithInvalidArgumentException()
+    {
+        $this->expectException(Exception::class);
+        $this->faker->gif(__DIR__ .'/non/existing/path');
+    }
+
+    public function testDownloadImage()
+    {
+        $fullPath = $this->faker->image();
+        $this->assertTrue(file_exists($fullPath));
+    }
+
+    public function testDownloadImageWithException()
+    {
+        $this->expectException(Exception::class);
+        $this->faker->image(null, -720);
+    }
+
+    public function testDownloadImageWithInvalidArgumentException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->faker->image(__DIR__ . '/non/existing/path');
     }
 }

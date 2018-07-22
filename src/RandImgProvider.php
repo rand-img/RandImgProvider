@@ -126,7 +126,7 @@ class RandImgProvider extends Base
     /**
      * Downloads an image to the specified directory.
      *
-     * @param mixed   $dir
+     * @param mixed $dir string or null. If null PHP will use the default temporary directory.
      * @param integer $width
      * @param integer $height
      * @param string  $category
@@ -149,8 +149,8 @@ class RandImgProvider extends Base
     /**
      * Downloads a gif to the specified directory.
      *
-     * @param string $dir
-     * @throws InvalidArgumentException If not a directory or writeable
+     * @param mixed $dir string or null. If null PHP will use the default temporary directory.
+     * @throws InvalidArgumentException If not a directory or writeable.
      *
      * @return string Filename with the path
      */

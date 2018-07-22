@@ -7,21 +7,9 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
-
-## Structure
-
-If any of the following are applicable to your project, then the directory structure should follow industry best practices by being named the following.
-
-```
-bin/        
-config/
-src/
-tests/
-vendor/
-```
-
+Faker provider for generating random images in your PHP projects. The default faker image provider, Lorem Pixel,
+is fine but it has too many requests and slow down your testing environment. This is the main reason why i made this
+PHP package.
 
 ## Install
 

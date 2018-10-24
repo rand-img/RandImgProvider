@@ -120,7 +120,7 @@ class RandImgProviderTest extends TestCase
     public function testDownloadImage()
     {
         $fullPath = $this->faker->image();
-        $this->assertTrue(file_exists($fullPath));
+        $this->assertFileExists($fullPath);
     }
 
     public function testDownloadImageWithException()
